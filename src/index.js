@@ -1,8 +1,8 @@
-//TODO: First method
+// // TODO: First method
 // import mongoose from "mongoose";
-// import { DB_NAME } from "./constants";
 // // start if with semi-colon because if editor don't end semi color before the line it cause
-// import express from express;
+// import express from "express";
+// import { DB_NAME } from "./constants.js";
 // const app = express();
 
 // ;( async () => {
@@ -21,20 +21,22 @@
 //         throw error;
 //     }
 // })()
-import dotenv from "dotenv"
+
+// TODO: second method
+import dotenv from "dotenv";
 import connectDB from "./db/db.js";
 import app from "./app.js";
 
 dotenv.config({
-    path: './env'
-})
+    path: "./env",
+});
 
 connectDB()
-.then(() => {
-    app.length(process.env.PORT || 4000, () => {
-        `Server is running at port: ${process.env.PORT}`
+    .then(() => {
+        app.listen(process.env.PORT || 4000, () => {
+            `Server is running at port: ${process.env.PORT}`;
+        });
     })
-})
-.catch((err) => {
-    console.log("Mongo db connection failed !! ", err)
-})
+    .catch((err) => {
+        console.log("Mongo db connection failed !! ", err);
+    });
